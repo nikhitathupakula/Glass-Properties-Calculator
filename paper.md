@@ -35,7 +35,7 @@ affiliations:
    index: 4
  - name: Computer Science Engineering(Cybersecurity), [Dayananda Sagar College of Engineering], Bangalore, India
    index: 5
-  -name: Computer Science Engineering(Data Science), [Dayananda Sagar College of Engineering], Bangalore, India
+ - name: Computer Science Engineering(Data Science), [Dayananda Sagar College of Engineering], Bangalore, India
    index: 6
 date: 5 September 2025
 bibliography: paper.bib
