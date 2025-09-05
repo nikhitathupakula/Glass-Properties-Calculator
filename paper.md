@@ -1,5 +1,5 @@
 ---
-title: 'Glass Properties Calculator: An open-source tool for glass formulation and property estimation'
+Title: 'Glass Properties Calculator: An open-source tool for glass formulation and property estimation'
 tags:
   - Python
   - Glass Science
