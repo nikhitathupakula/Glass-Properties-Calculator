@@ -21,33 +21,37 @@ authors:
   - name: "Kanishk Singh"
     orcid: 0000-000B-BBBB-BBBB
     affiliation: 5
+  - name: "Harni R"
+    orcid: 0000-000B-BBBB-BBBB
+    affiliation: 6
 affiliations:
- - name: Department of Physics, [Your University], City, Country
+ - name: Department of Physics, [Dayananda Sagar College of Engineering], Bangalore, India
    index: 1
- - name: Department of Materials Science, [Your University], City, Country
+ - name: Department of Computer Science Engineering(Cybersecurity), [Dayananda Sagar College of Engineering], Bangalore, India
    index: 2
- - name: Department of Chemistry, [Your University], City, Country
+ - name: Department of Computer Science Engineering(Cybersecurity), [Dayananda Sagar College of Engineering], Bangalore, India
    index: 3
- - name: Department of Applied Physics, [Your University], City, Country
+ - name: Department of Computer Science Engineering(Cybersecurity), [Dayananda Sagar College of Engineering], Bangalore, India
    index: 4
- - name: School of Engineering, [Your University], City, Country
+ - name: Computer Science Engineering(Cybersecurity), [Dayananda Sagar College of Engineering], Bangalore, India
    index: 5
+  -name: Computer Science Engineering(Data Science), [Dayananda Sagar College of Engineering], Bangalore, India
+   index: 6
 date: 5 September 2025
 bibliography: paper.bib
 ---
 
 # Summary
 
-Glass formulation requires precise calculations of raw material proportions and derived physical and optical properties. Manual computation is often error-prone and time-consuming.  
-**Glass Properties Calculator** is an open-source Python application that simplifies this process. It provides an intuitive interface to compute raw material ratios, weight fractions, gravimetric factors, molar volume, packing density, oxygen packing density, dielectric constants, and rare-earth element effects.  
+Glass formulation requires calculations of raw material proportions and expected physical and optical properties. Manual calculations are often tedious and prone to errors.  
+**Glass Properties Calculator** is an open-source Python application that enables users to input relevant data, such as the Batch Equation and Weight, producing detailed outputs. Its straightforward design allows for easy resetting and repetition of calculations, making it an essential tool for accurate glass composition analysis and production. 
 
 The software is available both as Python source code and as a standalone Windows executable, making it accessible to researchers and students without programming expertise.
 
 # Statement of need
+For the manufacture of Glass, accurate and precise calculations of ratios of raw materials is very important. Manual computation is very time-consuming and error-prone. Small errors in the ratio calculations can lead to significant changes in the properties of glass.
 
-Accurate design of glass compositions is crucial for research in materials science and photonics. Small errors in composition can significantly affect physical and optical behavior. Traditional methods rely on lengthy manual calculations or closed-source commercial tools, which limits reproducibility and accessibility.  
-
-The **Glass Properties Calculator** addresses this gap by offering a free, open-source, cross-platform solution. With minimal inputs (batch equation, density, refractive index, and optional coordination numbers), the tool generates multiple derived properties for analysis. This improves reproducibility, reduces human error, and accelerates research in photonic glass design.
+Existing tools are either too closed-source require programming skills for use. **Glass Properties Calculator** is an open-source easy to use software designed to fill this gap. The app also calculates the physical and oprical properties of the glass for given ratios to help decide on the raw materials.
 
 # Functionality
 
@@ -73,10 +77,8 @@ Implementation:
 
 # Figures
 
-![Flow chart of the estimation procedure.\label{fig:flowchart}](figure.png){ width=60% }
+![Flow chart of the estimation procedure.\label{fig:flowchart}](flowchart.jpg){ width=60% }
 
 # Acknowledgements
 
 We thank our colleagues and institutions who supported the development of this tool. Funding sources (if any) should be acknowledged here.
-
-# References
