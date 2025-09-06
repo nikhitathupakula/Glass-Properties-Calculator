@@ -13,16 +13,16 @@ authors:
     orcid: 0000-000Y-YYYY-YYYY
     affiliation: 2
   - name: "Samarth BC"
-    orcid: 0000-000Z-ZZZZ-ZZZZ
+    orcid: 0009-0000-5309-1063
     affiliation: 3
   - name: "Dhruthi G P"
-    orcid: 0000-000A-AAAA-AAAA
+    orcid: 0009-0009-4235-5970
     affiliation: 4
   - name: "Kanishk Singh"
-    orcid: 0000-000B-BBBB-BBBB
+    orcid: 0009-0007-0953-4606
     affiliation: 5
   - name: "Harni R"
-    orcid: 0000-000C-CCCC-CCCC
+    orcid: 0009-0001-4000-2348
     affiliation: 6
 affiliations:
  - name: Department of Physics, Dayananda Sagar College of Engineering, Bangalore, India
