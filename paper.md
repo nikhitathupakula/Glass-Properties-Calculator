@@ -7,7 +7,7 @@ tags:
   - Materials Science
 authors:
   - name: "Dr. Madhu A"
-    orcid: 0000-000X-XXXX-XXXX
+    orcid: 0000-0001-8809-8556
     affiliation: 1
   - name: "Nikhita Thupakula"
     orcid: 0000-000Y-YYYY-YYYY
