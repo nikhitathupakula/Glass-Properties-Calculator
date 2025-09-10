@@ -10,7 +10,7 @@ authors:
     orcid: 0000-0001-8809-8556
     affiliation: 1
   - name: "Nikhita Thupakula"
-    orcid: 0000-000Y-YYYY-YYYY
+    orcid: 0009-0000-0915-2340
     affiliation: 2
   - name: "Samarth BC"
     orcid: 0009-0000-5309-1063
