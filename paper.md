@@ -82,4 +82,4 @@ Many of the existing tools are either closed-source or require programming skill
 
 # Acknowledgements
 
-We thank our colleagues and institutions who supported the development of this tool. Funding sources (if any) should be acknowledged here.
+We thank DSCE for the support and encouragement for the R& D in multidisciplinary activities. Funding - not applicable
