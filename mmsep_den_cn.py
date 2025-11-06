@@ -11,7 +11,7 @@ def M_M_sep(moles, compounds, Vm):
 
 
 def coord_num_avg(mole_frac, Vm, cn_values):
-    if cn_values == None:
+    if cn_values is None:
         cn_out = f" "
         return cn_out
     else:

@@ -4,7 +4,7 @@ from Batch_equation_splitting2 import eqtn_split
 
 
 def batch_calc(moles, compounds, derived, a):
-    if (sum(moles) < 99.99 or sum(moles) > 100):
+    if sum(moles) < 99.99 or sum(moles) > 100:
         return []
 
     else:

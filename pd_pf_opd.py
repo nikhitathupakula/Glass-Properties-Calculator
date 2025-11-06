@@ -12,24 +12,27 @@ def oxy_pack_density(cations, ox_occ, mole_frac, Vm):
     OPD = round((1000 * sum(op)) / Vm, 4)
     return op, OPD
 
-def effect_rem(cations, batch_wt, wt_frac, den, compounds, selected_elements=None):
-    # Load library data
-    df = load_csv_file()
-    rare_earth_elements = df['Rare_Earth_Cat'].values
 
-    # Prepare results
+def effect_rem(cations, batch_wt, wt_frac, den, compounds, dopant_element=None, dopant_charge=None):
+    df = load_csv_file()
+    rare_earth_elements = [str(x).strip().lower() for x in df['Rare_Earth_Cat'].values]
     results = []
     identified_rems = []
+    z = 0
 
-    # Loop through cations and match with rare earth elements
+    # Handle dopant_element type (can be str, list, or None)
+    if isinstance(dopant_element, list):
+        dopant_element = dopant_element[0] if dopant_element else None
+    dopant_element = str(dopant_element).strip().lower() if dopant_element else None
+
     for c in range(len(cations)):
-        if cations[c] in rare_earth_elements:
-            if selected_elements and cations[c] not in selected_elements:
-                continue  # Skip non-selected elements
+        cat_clean = str(cations[c]).strip().lower()
 
+        # Match auto-found REMs or user-specified dopant
+        if (cat_clean in rare_earth_elements) or (dopant_element and dopant_element == cat_clean):
             identified_rems.append(cations[c])
+            z = dopant_charge if dopant_charge else 3  # use given charge or default 3
 
-            z = 3
             mass_rem = wt_frac[c]
             mw_rem = Substance.from_formula(compounds[c]).mass
             conc_rem_ic = (mass_rem * den * 6.0221e23) / (batch_wt * mw_rem)
@@ -39,21 +42,20 @@ def effect_rem(cations, batch_wt, wt_frac, den, compounds, selected_elements=Non
             pol_rad_cm = 0.5 * ((3.142 / (6 * conc_rem_ic)) ** 0.333)
             field_str = z / (pol_rad_cm ** 2)
 
-            # Append formatted results
             results.append(
                 f"Element: {cations[c]}\n"
-                f"Concentration of RE (ions/cm³): {conc_rem_ic:.4e}\n"
-                f"Concentration of RE (moles/l):  {conc_rem_ml:.4f}\n"
-                f"Inter Ionic Radius (m):         {ii_dist:.4e}\n"
-                f"Polaron Radius (m):             {pol_rad:.4e}\n"
-                f"Field Strength (cm⁻²):          {field_str:.4e}\n"
+                f"Concentration (ions/cm³): {conc_rem_ic:.4e}\n"
+                f"Concentration (moles/l):  {conc_rem_ml:.4f}\n"
+                f"Inter Ionic Radius (m):   {ii_dist:.4e}\n"
+                f"Polaron Radius (m):       {pol_rad:.4e}\n"
+                f"Field Strength (cm⁻²):    {field_str:.4e}\n"
             )
 
-    # Handle cases with no REMs
     if not identified_rems:
-        return z, ["No rare earth elements found."]
+        return 0, ["No dopant elements found."]
 
     return z, results
+
 
 def optical_basicity(cations, mole_frac, Vm, r_i, op, compounds):
     df = load_csv_file()
@@ -93,7 +95,8 @@ def optical_basicity(cations, mole_frac, Vm, r_i, op, compounds):
         cat_pol_sum = 0
         for i, cation in enumerate(cations):
             try:
-                user_input = simpledialog.askfloat("Cation Polarizability", f"Enter the cation polarizability for {cation} (in Å³): ")
+                user_input = simpledialog.askfloat("Cation Polarizability",
+                                                   f"Enter the cation polarizability for {cation} (in Å³): ")
                 cat_pol_list.append(user_input * 10e-31)
                 cat_pol_sum += user_input * mole_frac[i]
             except ValueError:

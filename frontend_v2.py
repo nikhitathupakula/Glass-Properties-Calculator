@@ -20,6 +20,7 @@ def clear_fields():
     text_output2.delete(1.0, tk.END)
     text_output3.delete(1.0, tk.END)
 
+
 def ask_rem_selection(elements):
     global selected_rem_elements
     selected_rem_elements = []
@@ -98,8 +99,8 @@ def calculate():
 
     except ValueError:
         try:
-            density = simpledialog.askfloat("Density Input", f"Enter density of {im_liq}:", parent=root)
-            Vm_info = molar_volume(wt_air, wt_liq, im_liq, org_mass)
+            density = simpledialog.askfloat("Density Input", f"Enter density of Immersion Liquid:", parent=root)
+            Vm_info = molar_volume(org_mass, density)
             density, Vm = Vm_info[0], Vm_info[1]
             text_output1.insert(tk.END, f"\nMolar Volume: {Vm}\n")
             text_output1.insert(tk.END, f"\nDensity: {density}\n")
@@ -138,36 +139,59 @@ def calculate():
     except Exception as e:
         text_output3.insert(tk.END, f"Error in coordination number calculation: {e}\n")
 
-    # Rare Earth Metal effect
     try:
-        # Call effect_rem and retrieve results
         rem_infos = effect_rem(cations, batch_wt, weightfractions, density, compounds)
-        z = rem_infos[0]  # Charge value (used internally, not displayed)
-        rem_info = rem_infos[1]  # List of formatted results
+        z = rem_infos[0]
+        rem_info = rem_infos[1]
 
-        # Check the number of identified REMs
-        if isinstance(rem_info, list) and rem_info:
-            if len(rem_info) == 1:  # Single REM case
-                text_output2.insert(tk.END, "\nRare Earth Metal Effect:\n")
-                text_output2.insert(tk.END, rem_info[0])  # Directly display the single REM's results
-            elif len(rem_info) > 1:  # Multiple REMs found
-                # Extract REM names and trigger dialog
-                rem_elements = [rem.split("\n")[0].split(":")[1].strip() for rem in rem_info]
-                ask_rem_selection(rem_elements)
+        if z == 0:
+            # Ask user for dopant manually
+            dopant_element = simpledialog.askstring(
+                "Dopant Input",
+                "No dopant detected automatically.\nEnter dopant element symbol (e.g., W, Ti, Fe) or leave blank to skip:",
+                parent=root
+            )
 
-                if selected_rem_elements:
-                    # Perform calculations for selected elements
-                    rem_info = effect_rem(cations, batch_wt, weightfractions, density, compounds, selected_rem_elements)
-                    text_output2.insert(tk.END, "\nSelected Rare Earth Metal Effects:\n")
-                    for item in rem_info[1]:  # Access only the results part
-                        text_output2.insert(tk.END, f"\n{item}\n")
+            if dopant_element:
+                dopant_charge = simpledialog.askinteger(
+                    "Dopant Charge",
+                    f"Enter the charge (valency) for {dopant_element}:",
+                    minvalue=1,
+                    maxvalue=10,
+                    parent=root
+                )
+
+                if dopant_charge:
+                    #text_output2.insert(tk.END, f"\nManual dopant input: {dopant_element} (Charge {dopant_charge}+)\n")
+                    rem_infos = effect_rem(
+                        cations, batch_wt, weightfractions, density, compounds,
+                        dopant_element=dopant_element, dopant_charge=dopant_charge
+                    )
+                    z = rem_infos[0]
+                    rem_info = rem_infos[1]
+
+                    if z != 0:
+                        '''text_output2.insert(tk.END,
+                                            f"\nDopant Effect for {dopant_element} (Charge {dopant_charge}+):\n")'''
+                        for item in rem_info:
+                            text_output2.insert(tk.END, f"\n{item}\n")
+                    else:
+                        text_output2.insert(tk.END,
+                                            f"\nCould not match dopant {dopant_element} with cations list. Skipping dopant calculations.\n")
                 else:
-                    text_output2.insert(tk.END, "No elements selected. No calculations performed.\n")
+                    text_output2.insert(tk.END,
+                                        f"\nNo charge entered for {dopant_element}. Skipping dopant-based calculations.\n")
+                    z = 0
+            else:
+                text_output2.insert(tk.END, "\nNo dopant specified. Skipping dopant-based calculations.\n")
+                z = 0
         else:
-            text_output2.insert(tk.END, "No rare earth elements found.\n")
+            text_output2.insert(tk.END, "\nDetected Dopant Effect:\n")
+            for item in rem_info:
+                text_output2.insert(tk.END, f"\n{item}\n")
+
     except Exception as e:
-        # Handle exceptions
-        text_output2.insert(tk.END, f"Error in Rare Earth Metal effect calculation: {e}\n")
+        text_output2.insert(tk.END, f"Error in dopant effect calculation: {e}\n")
 
     # Optical Basicity calculation
     try:
@@ -177,7 +201,7 @@ def calculate():
     except Exception as e:
         text_output3.insert(tk.END, f"Error in optical basicity calculation: {e}\n")
 
-    # Optical properties
+    #Optical Properties calculation
     try:
         results = opt_prop(r_i, z, Vm)
         text_output3.insert(tk.END, f"\n{results}")
@@ -230,8 +254,7 @@ def update_font_size(event=None):
 
 root = tk.Tk()
 root.geometry("1900x1080")
-root.title("PhysicalParameters_v1.2")
-
+root.title("PhysicalParameters_v1.22")
 label = tk.Label(root, text="PhysicalParameters", font=('Times New Roman', 18))
 label.pack()
 

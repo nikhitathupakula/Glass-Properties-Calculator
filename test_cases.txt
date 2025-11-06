@@ -1,0 +1,38 @@
+55H3BO3[B2O3] + 20Bi2O3+10SrCO3[SrO]+10Li2CO3[Li2O]+5WO3
+10
+1.356
+toluene
+1.100
+1.6560
+3 6 6 4 6
+
+20CaCO3[CaO] + 79.5NH4H2PO4[P2O5] + 0.5Dy2O3
+10
+0.204
+toluene
+0.136
+1.617
+8 4 8
+
+57H3BO3[B2O3]+20Bi2O3+10SrCO3[SrO]+10Li2CO3[Li2O]+3WO3
+10
+1.378
+toluene
+1.114
+1.6555
+3 6 6 4 6
+
+
+Equation:
+60H3BO3[B2O3]+20Bi2O3+10SrCO3[SrO]+10Li2CO3[Li2O]
+Batch Weight:
+10
+2.860
+Weight of Comp in air:
+Toluene
+Immersion Liquid:
+2.306
+Wt of Comp in Imm Liq:
+Refractive index:
+1.6545
+3 6 6 4

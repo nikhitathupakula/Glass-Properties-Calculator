@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['frontend_v2.py'],
+    ['frontend.py'],
     pathex=[],
     binaries=[],
     datas=[('library.csv', '.'), ('mendeleev/elements.db', 'mendeleev')],
