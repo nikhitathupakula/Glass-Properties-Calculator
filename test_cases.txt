@@ -1,3 +1,4 @@
+Version 1.21
 55H3BO3[B2O3] + 20Bi2O3+10SrCO3[SrO]+10Li2CO3[Li2O]+5WO3
 10
 1.356
@@ -36,3 +37,4 @@ Wt of Comp in Imm Liq:
 Refractive index:
 1.6545
 3 6 6 4
+

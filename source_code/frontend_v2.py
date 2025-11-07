@@ -71,10 +71,10 @@ def calculate():
     try:
         batch_wt = float(entries[1].get())
         know = batch_calc(moles, compounds, derived, batch_wt)
-        weightfractions, dermasses, total_compmass, grav_factors = know[0], know[1], know[2], know[3]
-        org_mass = dermasses / 100
+        weightfractions, total_compmass, dermasses, grav_factors = know[0], know[1], know[2], know[3]
+        org_mass = total_compmass / 100
         text_output1.insert(tk.END,
-                            f"Derived Mass: {round(total_compmass / 100, 4)}\nOriginal Mass: {round(org_mass, 4)}\n")
+                            f"Derived Mass: {round(dermasses / 100, 4)}\nOriginal Mass: {round(org_mass, 4)}\n")
         text_output1.insert(tk.END,
                             f"\nWeight Fractions: \n")
         for i, wf in enumerate(weightfractions):
