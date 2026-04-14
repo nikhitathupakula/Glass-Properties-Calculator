@@ -78,7 +78,7 @@ Many of the existing tools are either closed-source or require programming skill
 
 # Figures
 
-![Flow chart of the estimation procedure]{flowchart.jpeg}{width=60%}
+<img src="flowchart.jpeg" alt="Flow chart of the estimation procedure" width="60%">
 
 # Acknowledgements
 
