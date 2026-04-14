@@ -1,6 +1,6 @@
 ## Testing
 
-This project includes both automated tests for the Python backend and manual validation cases for the standalone executable.
+This project includes both automated tests for the Python backend and manual validation cases for the standalone executable. The test cases for the executable can be found in test_cases.py
 
 ### Automated Tests (Python Source Code)
 
