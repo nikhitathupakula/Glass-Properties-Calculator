@@ -2,7 +2,7 @@
 
 This project includes both automated tests for the Python backend and manual validation cases for the standalone executable.
 
-### 🔹 Automated Tests (Python Source Code)
+### Automated Tests (Python Source Code)
 
 Automated tests are provided to verify the correctness of the core computational logic, including physical and optical property calculations.
 
