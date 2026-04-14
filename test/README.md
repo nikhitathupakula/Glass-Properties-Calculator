@@ -11,5 +11,5 @@ Install dependencies before running tests:
 Ensure the test files are downloaded in the same folder as the source code
 ```bash
 pip install -r requirements.txt
-python test.py
-python test_v2.py
+#From the project root directory run
+pytest -v
